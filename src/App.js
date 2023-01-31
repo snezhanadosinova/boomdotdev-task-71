@@ -9,7 +9,7 @@ function App() {
   const fetchRequest = () => {
     fetch(`https://jaspervdj.be/lorem-markdownum/markdown.txt`)
       .then((restult) => restult.text())
-      .then((terms) => setTerms(terms))
+      .then((restult) => setTerms(restult))
       .catch((error) => {
         setError(error.message);
       });
