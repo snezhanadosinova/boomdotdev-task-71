@@ -6,17 +6,22 @@ function App() {
   const [terms, setTerms] = useState(null);
   const [error, setError] = useState(null);
 
-  const fetchRequest = () => {
+  // const fetchRequest = () => {
+  //   fetch(`https://jaspervdj.be/lorem-markdownum/markdown.txt`)
+  //     .then((restult) => restult.text())
+  //     .then((restult) => setTerms(restult))
+  //     .catch((error) => {
+  //       setError(error.message);
+  //     });
+  // };
+
+  useEffect(() => {
     fetch(`https://jaspervdj.be/lorem-markdownum/markdown.txt`)
       .then((restult) => restult.text())
       .then((restult) => setTerms(restult))
       .catch((error) => {
         setError(error.message);
       });
-  };
-
-  useEffect(() => {
-    fetchRequest();
   }, []);
 
   useEffect(() => {
