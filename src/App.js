@@ -8,12 +8,7 @@ function App() {
 
   const fetchRequest = () => {
     fetch(`https://jaspervdj.be/lorem-markdownum/markdown.txt`)
-      .then((restult) =>
-        restult
-          .clone()
-          .json()
-          .catch(() => restult.text())
-      )
+      .then((restult) => restult.text())
       .then((terms) => setTerms(terms))
       .catch((error) => {
         setError(error.message);
@@ -22,6 +17,9 @@ function App() {
 
   useEffect(() => {
     fetchRequest();
+  }, []);
+
+  useEffect(() => {
     document
       .querySelector(".content")
       .addEventListener("scroll", checkScrollHeight, false);
@@ -35,7 +33,7 @@ function App() {
         document.querySelector("button").disabled = false;
       }
     }
-  }, []);
+  }, [terms]);
 
   return (
     <div className="App">
